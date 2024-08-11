@@ -25,3 +25,12 @@ Tools
 - Agent uses decription to determine which tools to use 
 
 ReAct - reasoning and acting (prompt engineering technique how agents are built under the hood)
+
+Pydantic Object 
+- user defined model/schema 
+
+You can plug pre-defined schema into prompt tempalte via partial varaibles 
+- summary_parser.get_format_intructions() 
+- we need to get the format instructions to get and paste the schema 
+
+LCEL - langchain expression language 
