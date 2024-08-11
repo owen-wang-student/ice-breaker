@@ -1,13 +1,16 @@
 import os 
 from dotenv import load_dotenv
 
+load_dotenv()
+
 from langchain.prompts.prompt import PromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from third_parties.linkedin import scrape_linkedin_profile
+from agents.linkedin_lookup_agent import lookup as linkedin_lookup_agent
 
-if __name__ == "__main__":
-  load_dotenv()
+def ice_break_with(name: str) -> str:
+  linkedin_profile_url = linkedin_lookup_agent(name=name)
 
   # variables inside of curly brackets represent parameters 
   summary_template = """
@@ -17,7 +20,7 @@ if __name__ == "__main__":
   """
 
   # information to be used as a variable 
-  linkedin_information = scrape_linkedin_profile(linkedin_profile_url="https://www.linkedin.com/in/owenwang05/", mock=True)
+  linkedin_information = scrape_linkedin_profile(linkedin_profile_url=linkedin_profile_url, mock=True)
 
   # create a prompt template object 
   summary_prompt_template = PromptTemplate(template=summary_template, input_variables=["information"])
@@ -32,3 +35,8 @@ if __name__ == "__main__":
   res = chain.invoke(input={"information": linkedin_information})
   
   print(res)
+
+
+if __name__ == "__main__":
+  ice_break_with("owen wang uiuc")
+

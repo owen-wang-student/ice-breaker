@@ -13,3 +13,15 @@ Chain
 
 Output Parser
 - parses the output of an LLM and serializes it
+
+Agents
+- performs actions on your behalf and can interact with llms (can access data llms do not have access too)
+- agents use tools that are provided by the user and uses llm to determine what order to use them in 
+- llm -> subtasks -> returns answer
+
+Tools
+- connects langchain with third-party sources
+- contains description, function, and name
+- Agent uses decription to determine which tools to use 
+
+ReAct - reasoning and acting (prompt engineering technique how agents are built under the hood)
