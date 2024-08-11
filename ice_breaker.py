@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from langchain.prompts.prompt import PromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
+from third_parties.linkedin import scrape_linkedin_profile
 
 if __name__ == "__main__":
   load_dotenv()
@@ -16,9 +17,7 @@ if __name__ == "__main__":
   """
 
   # information to be used as a variable 
-  information="""
-    Insert some information 
-  """
+  linkedin_information = scrape_linkedin_profile(linkedin_profile_url="https://www.linkedin.com/in/owenwang05/", mock=True)
 
   # create a prompt template object 
   summary_prompt_template = PromptTemplate(template=summary_template, input_variables=["information"])
@@ -30,6 +29,6 @@ if __name__ == "__main__":
   chain = summary_prompt_template | llm | StrOutputParser()
 
   # run chain 
-  res = chain.invoke(input={"information": information})
+  res = chain.invoke(input={"information": linkedin_information})
   
   print(res)
