@@ -12,7 +12,7 @@ from output_parsers import summary_parser
 from output_parsers import Summary
 from typing import Tuple
 
-def ice_break_with(name: str) -> Tuple(Summary, str):
+def ice_break_with(name: str):
   linkedin_profile_url = linkedin_lookup_agent(name=name)
 
   # variables inside of curly brackets represent parameters 
@@ -25,7 +25,7 @@ def ice_break_with(name: str) -> Tuple(Summary, str):
   """
 
   # information to be used as a variable 
-  linkedin_information = scrape_linkedin_profile(linkedin_profile_url=linkedin_profile_url, mock=True)
+  linkedin_information = scrape_linkedin_profile(linkedin_profile_url=linkedin_profile_url, mock=False)
 
   # create a prompt template object 
   summary_prompt_template = PromptTemplate(template=summary_template, input_variables=["information"], partial_variables={"format_instructions": summary_parser.get_format_instructions()})
