@@ -1,0 +1,15 @@
+Large language models recieve prompts as an input 
+
+Prompt Template 
+- wrapper class around a prompt that allows the prompt to receive inputs 
+
+Chat Models 
+- wrapper class around LLMs that allows us to interact with them similar to a chat
+- what the user sends has the role of human and what the llm sends has the role of AI
+- responses are of type: AIMessageObject so they require additional filtering
+
+Chain 
+- allows us to combine multiple components together to create an application 
+
+Output Parser
+- parses the output of an LLM and serializes it
